@@ -48,8 +48,18 @@ namespace GestoreEventi
             }
             set
             {
-                if (DateTime.TryParseExact(value, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _data)) ;
-                    
+                // Prova a parsare la stringa di input nel formato "gg/MM/aaaa"
+                if (DateTime.TryParseExact(value, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+                {
+                    // Se il parsing ha successo, assegna il valore parsato a _data
+                    _data = parsedDate;
+                }
+                else
+                {
+                    // Gestisci il caso in cui la data di input non sia nel formato corretto
+                    // Ad esempio, puoi lanciare un'eccezione o impostare _data a un valore predefinito
+                    throw new ArgumentException("Formato data non valido");
+                }
             }
         }
         public int NumeroPostiPrenotati 
