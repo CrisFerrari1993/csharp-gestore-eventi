@@ -49,6 +49,7 @@ namespace GestoreEventi
             set
             {
                 if (DateTime.TryParseExact(value, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _data)) ;
+                    
             }
         }
         public int NumeroPostiPrenotati 
@@ -110,5 +111,6 @@ namespace GestoreEventi
         {
             return $"{_data.ToString("dd/MM/yyyy")} - {_titolo}";
         }
+        
     }
 }
