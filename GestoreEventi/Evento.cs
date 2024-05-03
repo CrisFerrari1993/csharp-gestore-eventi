@@ -22,7 +22,7 @@ namespace GestoreEventi
             } 
             set 
             { 
-                if (value.Length <= 1) 
+                if (string.IsNullOrWhiteSpace(value)) 
                     throw new Exception("Il titolo non può essere vuoto"); 
                 _titolo = value; 
             } 
