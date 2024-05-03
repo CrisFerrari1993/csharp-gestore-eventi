@@ -51,6 +51,8 @@ namespace GestoreEventi
                 // Prova a parsare la stringa di input nel formato "gg/MM/aaaa"
                 if (DateTime.TryParseExact(value, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
                 {
+                    if (parsedDate < DateTime.Today)
+                        throw new Exception($"La data deve essere almeno {DateTime.Now}");
                     // Se il parsing ha successo, assegna il valore parsato a _data
                     _data = parsedDate;
                 }
